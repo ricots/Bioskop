@@ -25,7 +25,15 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Judul Film"
             android:id="@+id/row_title"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin" />
+            android:layout_marginBottom="8dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jadwal Film"
+            android:id="@+id/row_schedule"
+            android:maxLines="10" />
 
     </LinearLayout>
 

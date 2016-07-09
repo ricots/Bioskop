@@ -22,6 +22,21 @@ public class FilmScheduleItem {
         return jam;
     }
 
+    public String getJamData() {
+        StringBuilder sb = new StringBuilder();
+
+        int i = 0;
+        for (String s : jam) {
+            if (i > 0) {
+                sb.append(", ");
+            }
+            sb.append(s);
+            i++;
+        }
+
+        return sb.toString();
+    }
+
     public void setJam(List<String> jam) {
         this.jam = jam;
     }

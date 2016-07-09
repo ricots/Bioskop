@@ -53,6 +53,7 @@ public class FilmListAdapter extends BaseAdapter {
 
         ((TextView) convertView.findViewById(R.id.row_title)).setText(getItem(position).getMovie());
         Glide.with(mContext).load(new GlideUrl(getItem(position).getPoster())).into(((ImageView) convertView.findViewById(R.id.img_poster)));
+        ((TextView) convertView.findViewById(R.id.row_schedule)).setText(getItem(position).getJadwalData());
 
         return convertView;
     }

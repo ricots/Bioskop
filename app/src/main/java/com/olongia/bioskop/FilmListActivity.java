@@ -12,6 +12,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.olongia.bioskop.model.FilmListAdapter;
 import com.olongia.bioskop.model.FilmListItem;
+import com.olongia.bioskop.model.FilmScheduleItem;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -67,9 +68,28 @@ public class FilmListActivity extends AppCompatActivity {
                     for (int i = 0; i < data.length(); i++) {
                         JSONObject o = data.getJSONObject(i);
 
+                        List<FilmScheduleItem> sl = new ArrayList<>();
+                        JSONArray schedule = new JSONArray(o.getString("jadwal"));
+                        for (int j = 0; j < schedule.length(); j++) {
+                            JSONObject s = schedule.getJSONObject(j);
+
+                            FilmScheduleItem sc = new FilmScheduleItem();
+                            sc.setBioskop(s.getString("bioskop"));
+
+                            JSONArray jm = new JSONArray(s.getString("jam"));
+                            List<String> jam = new ArrayList<>();
+                            for (int jx = 0; jx < jm.length(); jx++) {
+                                jam.add(jm.getString(jx));
+                            }
+
+                            sc.setJam(jam);
+                            sl.add(sc);
+                        }
+
                         FilmListItem item = new FilmListItem();
                         item.setMovie(o.getString("movie"));
                         item.setPoster(o.getString("poster"));
+                        item.setJadwal(sl);
 
                         mData.add(item);
                     }

@@ -31,6 +31,21 @@ public class FilmListItem {
         return jadwal;
     }
 
+    public String getJadwalData() {
+        StringBuilder sb = new StringBuilder();
+
+        int i = 0;
+        for (FilmScheduleItem s : jadwal) {
+            if (i > 0) {
+                sb.append("\n");
+            }
+            sb.append("#" + s.getBioskop() + ": " + s.getJamData());
+            i++;
+        }
+
+        return sb.toString();
+    }
+
     public void setJadwal(List<FilmScheduleItem> jadwal) {
         this.jadwal = jadwal;
     }
