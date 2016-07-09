@@ -1,5 +1,7 @@
 package com.olongia.bioskop.model;
 
+import android.text.TextUtils;
+
 import java.util.List;
 
 /**
@@ -27,6 +29,10 @@ public class FilmScheduleItem {
 
         int i = 0;
         for (String s : jam) {
+            //jam yang kosong dilewati saja
+            if (TextUtils.isEmpty(s.trim())) {
+                continue;
+            }
             if (i > 0) {
                 sb.append(", ");
             }
