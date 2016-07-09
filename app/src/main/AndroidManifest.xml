@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".FilmListActivity"
+            android:label="Daftar" />
     </application>
 
 </manifest>

@@ -1,10 +1,12 @@
 package com.olongia.bioskop;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -39,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.listDaerah);
         listView.setAdapter(mAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, FilmListActivity.class);
+                intent.putExtra("id", id);
+                intent.putExtra("nama", mData.get(position).getNama());
+                startActivity(intent);
+            }
+        });
 
         //ambil depe data
         onGetData();
