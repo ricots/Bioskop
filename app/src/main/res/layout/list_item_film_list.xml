@@ -3,14 +3,30 @@
     android:orientation="horizontal"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/activity_horizontal_margin"
     android:gravity="center_vertical">
 
-    <TextView
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:id="@+id/img_poster"
+        android:background="#eee" />
+
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Nama Film"
-        android:id="@+id/row_title"/>
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Judul Film"
+            android:id="@+id/row_title"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin" />
+
+    </LinearLayout>
 
 </LinearLayout>

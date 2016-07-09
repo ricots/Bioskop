@@ -5,8 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.model.GlideUrl;
 import com.olongia.bioskop.R;
 
 import java.util.List;
@@ -48,7 +51,8 @@ public class FilmListAdapter extends BaseAdapter {
             convertView=inflater.inflate(R.layout.list_item_film_list, null);
         }
 
-        ((TextView) convertView.findViewById(R.id.row_title)).setText( getItem(position).getMovie() );
+        ((TextView) convertView.findViewById(R.id.row_title)).setText(getItem(position).getMovie());
+        Glide.with(mContext).load(new GlideUrl(getItem(position).getPoster())).into(((ImageView) convertView.findViewById(R.id.img_poster)));
 
         return convertView;
     }
