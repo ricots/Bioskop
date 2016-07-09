@@ -45,7 +45,7 @@ public class FilmListAdapter extends BaseAdapter {
 
         if (convertView==null) {
             LayoutInflater inflater=(LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView=inflater.inflate(R.layout.list_item_daerah_list, null);
+            convertView=inflater.inflate(R.layout.list_item_film_list, null);
         }
 
         ((TextView) convertView.findViewById(R.id.row_title)).setText( getItem(position).getMovie() );
