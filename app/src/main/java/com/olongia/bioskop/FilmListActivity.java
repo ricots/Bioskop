@@ -66,7 +66,7 @@ public class FilmListActivity extends AppCompatActivity {
 
 
     private void onGetData(final long id) {
-        final ProgressDialog pd = ProgressDialog.show(this, "", "Tunggi sadiki...", true, false);
+        final ProgressDialog pd = ProgressDialog.show(this, "", "Tunggu sadiki...", true, true);
 
         mClient.get("http://ibacor.com/api/jadwal-bioskop?id=" + id, new JsonHttpResponseHandler() {
             @Override
@@ -112,7 +112,7 @@ public class FilmListActivity extends AppCompatActivity {
                     mAdapter.notifyDataSetChanged();
 
                 } catch (Exception ex) {
-                    Toast.makeText(FilmListActivity.this, "Data gagal ditampilkan", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FilmListActivity.this, "Data gagal ditampilkan", Toast.LENGTH_LONG).show();
                 }
 
                 pd.dismiss();
@@ -121,7 +121,7 @@ public class FilmListActivity extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 pd.dismiss();
-                Toast.makeText(FilmListActivity.this, "Permintaan ke server gagal", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FilmListActivity.this, "Permintaan ke server gagal", Toast.LENGTH_LONG).show();
             }
         });
 

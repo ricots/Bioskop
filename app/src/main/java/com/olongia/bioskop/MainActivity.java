@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void onGetData() {
-        final ProgressDialog pd = ProgressDialog.show(this, "", "Tunggi sadiki...", true, false);
+        final ProgressDialog pd = ProgressDialog.show(this, "", "Tunggu sadiki...", true, false);
 
         mClient.get("http://ibacor.com/api/jadwal-bioskop", new JsonHttpResponseHandler() {
             @Override
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     mAdapter.notifyDataSetChanged();
 
                 } catch (Exception ex) {
-                    Toast.makeText(MainActivity.this, "Data gagal ditampilkan", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Data gagal ditampilkan", Toast.LENGTH_LONG).show();
                 }
 
                 pd.dismiss();
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 pd.dismiss();
-                Toast.makeText(MainActivity.this, "Permintaan ke server gagal", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Permintaan ke server gagal", Toast.LENGTH_LONG).show();
             }
         });
 
