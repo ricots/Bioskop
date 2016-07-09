@@ -34,7 +34,7 @@ public class FilmListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_film_list);
 
         Intent intent = getIntent();
-        setTitle(intent.getStringExtra("nama"));
+        setTitle(ucFirst(intent.getStringExtra("nama")));
 
         mClient = new AsyncHttpClient();
         mClient.setTimeout(60*1000); // 1 menit (default 10 detik)
@@ -47,6 +47,11 @@ public class FilmListActivity extends AppCompatActivity {
 
         //ambil depe data (default: Gorontalo)
         onGetData(intent.getLongExtra("id", 85));
+    }
+
+
+    private String ucFirst(String text) {
+        return text.substring(0,1).toUpperCase() + text.substring(1).toLowerCase();
     }
 
 
