@@ -8,6 +8,11 @@ public class DaerahListItem {
     private int id;
     private String nama;
 
+    public DaerahListItem(int id, String nama) {
+        this.id = id;
+        this.nama = nama;
+    }
+
     public int getId() {
         return id;
     }
