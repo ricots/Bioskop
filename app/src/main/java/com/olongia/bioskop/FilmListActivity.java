@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.olongia.bioskop.model.FilmListAdapter;
 import com.olongia.bioskop.model.FilmListItem;
 import com.olongia.bioskop.model.FilmScheduleItem;
@@ -68,7 +69,11 @@ public class FilmListActivity extends AppCompatActivity {
     private void onGetData(final long id) {
         final ProgressDialog pd = ProgressDialog.show(this, "", "Tunggu sadiki...", true, true);
 
-        mClient.get("http://ibacor.com/api/jadwal-bioskop?id=" + id, new JsonHttpResponseHandler() {
+        //argumen lewatkan sebagai parameter request, biar clean :)
+        RequestParams params = new RequestParams();
+        params.put("id", id);
+        
+        mClient.get("http://ibacor.com/api/jadwal-bioskop", params, new JsonHttpResponseHandler() {
             @Override
             public void onStart() {
                 Log.d("BIOSKOP", "Menghubungi API");
