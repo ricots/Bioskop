@@ -40,7 +40,8 @@ public class FilmListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
-        setTitle(ucFirst(intent.getStringExtra("nama")));
+        getSupportActionBar().setTitle(ucFirst(intent.getStringExtra("nama")));
+        getSupportActionBar().setSubtitle("Tayang Hari Ini");
 
         mClient = new AsyncHttpClient();
         mClient.setTimeout(60*1000); // 1 menit (default 10 detik)
