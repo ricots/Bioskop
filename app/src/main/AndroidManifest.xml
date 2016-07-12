@@ -19,6 +19,9 @@
         <activity
             android:name=".FilmListActivity"
             android:label="Daftar" />
+        <activity
+            android:name=".FilmScheduleActivity"
+            android:label="Jadwal Tayang"/>
     </application>
 
 </manifest>

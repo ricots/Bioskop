@@ -1,5 +1,6 @@
 package com.olongia.bioskop.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,7 +10,8 @@ public class FilmListItem {
 
     private String movie;
     private String poster;
-    private List<FilmScheduleItem> jadwal;
+    private ArrayList<FilmScheduleItem> jadwal;
+    private String genre;
 
     public String getMovie() {
         return movie;
@@ -27,26 +29,19 @@ public class FilmListItem {
         this.poster = poster;
     }
 
-    public List<FilmScheduleItem> getJadwal() {
+    public ArrayList<FilmScheduleItem> getJadwal() {
         return jadwal;
     }
 
-    public String getJadwalData() {
-        StringBuilder sb = new StringBuilder();
-
-        int i = 0;
-        for (FilmScheduleItem s : jadwal) {
-            if (i > 0) {
-                sb.append("\n");
-            }
-            sb.append("#" + s.getBioskop() + ": " + s.getJamData());
-            i++;
-        }
-
-        return sb.toString();
+    public void setJadwal(ArrayList<FilmScheduleItem> jadwal) {
+        this.jadwal = jadwal;
     }
 
-    public void setJadwal(List<FilmScheduleItem> jadwal) {
-        this.jadwal = jadwal;
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 }

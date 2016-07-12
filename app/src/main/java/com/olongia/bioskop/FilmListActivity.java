@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -48,6 +50,15 @@ public class FilmListActivity extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.listFilm);
         listView.setAdapter(mAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(FilmListActivity.this, FilmScheduleActivity.class);
+                intent.putExtra("judul", mData.get(position).getMovie());
+                intent.putParcelableArrayListExtra("jadwal", mData.get(position).getJadwal());
+                startActivity(intent);
+            }
+        });
 
         //ambil depe data (default: Gorontalo)
         onGetData(intent.getLongExtra("id", 85));
@@ -72,29 +83,31 @@ public class FilmListActivity extends AppCompatActivity {
         //argumen lewatkan sebagai parameter request, biar clean :)
         RequestParams params = new RequestParams();
         params.put("id", id);
-        
+
         mClient.get("http://ibacor.com/api/jadwal-bioskop", params, new JsonHttpResponseHandler() {
             @Override
             public void onStart() {
-                Log.d("BIOSKOP", "Menghubungi API");
+                Log.d("BIOSKOP", "Menghubungi API : " + id);
             }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.d("BIOSKOP", Integer.toString(statusCode));
 
+                //TODO: Pakai GSon
                 try {
                     JSONArray data = new JSONArray(response.getString("data"));
                     for (int i = 0; i < data.length(); i++) {
                         JSONObject o = data.getJSONObject(i);
 
-                        List<FilmScheduleItem> sl = new ArrayList<>();
+                        ArrayList<FilmScheduleItem> sl = new ArrayList<>();
                         JSONArray schedule = new JSONArray(o.getString("jadwal"));
                         for (int j = 0; j < schedule.length(); j++) {
                             JSONObject s = schedule.getJSONObject(j);
 
                             FilmScheduleItem sc = new FilmScheduleItem();
                             sc.setBioskop(s.getString("bioskop"));
+                            sc.setHarga(s.getString("harga"));
 
                             JSONArray jm = new JSONArray(s.getString("jam"));
                             List<String> jam = new ArrayList<>();
@@ -102,6 +115,7 @@ public class FilmListActivity extends AppCompatActivity {
                                 jam.add(jm.getString(jx));
                             }
 
+                            Log.d("BIOSKOP", s.getString("bioskop"));
                             sc.setJam(jam);
                             sl.add(sc);
                         }
@@ -110,6 +124,7 @@ public class FilmListActivity extends AppCompatActivity {
                         item.setMovie(o.getString("movie"));
                         item.setPoster(o.getString("poster"));
                         item.setJadwal(sl);
+                        item.setGenre(o.getString("genre"));
 
                         mData.add(item);
                     }

@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.d("BIOSKOP", Integer.toString(statusCode));
 
+                //TODO: Pakai GSon
                 try {
                     JSONArray data = new JSONArray(response.getString("data"));
                     for (int i = 0; i < data.length(); i++) {
