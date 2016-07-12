@@ -126,6 +126,7 @@ public class FilmListActivity extends AppCompatActivity {
                         item.setPoster(o.getString("poster"));
                         item.setJadwal(sl);
                         item.setGenre(o.getString("genre"));
+                        item.setDuration(o.getString("duration"));
 
                         mData.add(item);
                     }

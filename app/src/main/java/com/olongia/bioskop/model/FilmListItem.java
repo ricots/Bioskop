@@ -12,6 +12,7 @@ public class FilmListItem {
     private String poster;
     private ArrayList<FilmScheduleItem> jadwal;
     private String genre;
+    private String duration;
 
     public String getMovie() {
         return movie;
@@ -43,5 +44,13 @@ public class FilmListItem {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 }
