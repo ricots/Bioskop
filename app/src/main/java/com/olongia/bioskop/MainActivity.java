@@ -80,7 +80,10 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject o = data.getJSONObject(i);
                         mData.add(new DaerahListItem(o.getInt("id"), o.getString("kota")));
                     }
+
                     mAdapter.notifyDataSetChanged();
+
+                    Toast.makeText(MainActivity.this, "Pilih daerah untuk menampilkan daftar film", Toast.LENGTH_LONG).show();
 
                 } catch (Exception ex) {
                     Toast.makeText(MainActivity.this, "Data gagal ditampilkan", Toast.LENGTH_LONG).show();

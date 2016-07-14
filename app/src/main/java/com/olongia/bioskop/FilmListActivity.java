@@ -133,6 +133,8 @@ public class FilmListActivity extends AppCompatActivity {
 
                     mAdapter.notifyDataSetChanged();
 
+                    Toast.makeText(FilmListActivity.this, "Pilih film untuk menampilkan jadwal tayang", Toast.LENGTH_LONG).show();
+
                 } catch (Exception ex) {
                     Toast.makeText(FilmListActivity.this, "Data gagal ditampilkan", Toast.LENGTH_LONG).show();
                 }
